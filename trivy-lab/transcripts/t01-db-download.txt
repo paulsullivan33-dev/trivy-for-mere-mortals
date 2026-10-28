@@ -1,0 +1,7 @@
+$ trivy fs --download-db-only --db-repository ghcr.io/aquasecurity/trivy-db:2 --timeout 120m trivy-lab/fixtures/oldpy
+2026-10-28T05:20:37Z	INFO	[vulndb] Need to update DB
+2026-10-28T05:20:37Z	INFO	[vulndb] Downloading vulnerability DB...
+2026-10-28T05:20:37Z	INFO	[vulndb] Downloading artifact...	repo="ghcr.io/aquasecurity/trivy-db:2"
+[progress bar: 130.11 MiB downloaded, reaching 100% in about 15 seconds]
+2026-10-28T05:20:55Z	INFO	[vulndb] Artifact successfully downloaded	repo="ghcr.io/aquasecurity/trivy-db:2"
+exit code: 0

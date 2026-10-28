@@ -1,0 +1,28 @@
+site_name: Trivy for Mere Mortals
+site_description: A scanner that finds known vulnerabilities and misconfigurations in your container images, your code and your configuration files. Reading its reports line by line, gating a build on severity, and knowing exactly what a clean scan does and does not promise.
+site_url: https://paulsullivan33-dev.github.io/trivy-for-mere-mortals/
+copyright: 'Part of <a href="https://paulsullivan33-dev.github.io/mere-mortals/">For Mere Mortals</a> · Text <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, code MIT'
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What Trivy Is: what-trivy-is.md
+  - The Moving Parts: the-moving-parts.md
+  - Installing Trivy: installing-trivy.md
+  - Your First Scan: your-first-scan.md
+  - Reading a Report: reading-a-report.md
+  - Scanning Images: scanning-images.md
+  - Scanning for Misconfigurations: scanning-for-misconfigurations.md
+  - Secrets and Licences: secrets-and-licences.md
+  - Severity, Exit Codes and CI: severity-exit-codes-and-ci.md
+  - Reports and SBOMs: reports-and-sboms.md
+  - Recipes: recipes.md
+  - The Neighbours: the-neighbours.md
+  - Limits: limits.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md

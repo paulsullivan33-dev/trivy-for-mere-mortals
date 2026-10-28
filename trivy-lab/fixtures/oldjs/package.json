@@ -1,0 +1,12 @@
+{
+  "name": "oldjs-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Fictional sample project with an old lockfile",
+  "dependencies": {
+    "lodash": "4.17.15",
+    "minimist": "0.0.8",
+    "y18n": "4.0.0",
+    "ini": "1.3.5"
+  }
+}

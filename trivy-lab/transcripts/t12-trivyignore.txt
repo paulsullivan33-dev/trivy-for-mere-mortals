@@ -1,0 +1,19 @@
+$ cat trivy-lab/ignore-demo/.trivyignore
+# The minimist finding is accepted for this throwaway fixture:
+# it is a sample, not production code. Review date: 2026-10-28.
+CVE-2021-44906
+
+$ cd trivy-lab/ignore-demo && trivy fs --severity CRITICAL --exit-code 1 .
+
+Report Summary
+
+┌───────────────────┬──────┬─────────────────┬─────────┐
+│      Target       │ Type │ Vulnerabilities │ Secrets │
+├───────────────────┼──────┼─────────────────┼─────────┤
+│ package-lock.json │ npm  │        0        │    -    │
+└───────────────────┴──────┴─────────────────┴─────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+exit code: 0

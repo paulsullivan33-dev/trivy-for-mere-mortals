@@ -1,0 +1,60 @@
+Trivy — the distilled commands
+====================================================================
+Placeholders: <folder> is a project folder; <image> is an image
+name or tag of yours.
+
+INSTALL AND DATABASE (chapters 3-4)
+--------------------------------------------------------------------
+  # the release archive route (see chapter 3 for the URL shape):
+  tar xzf trivy_<ver>_Linux-64bit.tar.gz trivy
+  trivy --version
+  trivy version            # also shows the database's three dates
+
+  trivy fs --download-db-only <folder>
+                                   # fetch the DB on its own
+  trivy fs --download-db-only \
+    --db-repository ghcr.io/aquasecurity/trivy-db:2 \
+    --timeout 120m <folder>
+                                   # if the default route stalls
+                                   # (chapter 3, transcript t90)
+
+FIRST SCANS (chapters 4-6)
+--------------------------------------------------------------------
+  trivy fs <folder>                # vulnerabilities + secrets
+  trivy fs --scanners vuln <folder>
+                                   # dependencies only, faster
+  trivy repo <path-or-url>         # a git repository
+  trivy image <image>              # pull (if needed) and scan
+  trivy image --input image.tar    # an image saved to a file
+
+CONFIG, SECRETS, LICENCES (chapters 7-8)
+--------------------------------------------------------------------
+  trivy config <folder>            # Dockerfile / Terraform /
+                                   # Kubernetes misconfigurations
+  trivy fs --scanners secret <folder>
+  trivy fs --scanners license <folder>
+                                   # needs the dependencies
+                                   # installed (npm install /
+                                   # site-packages), chapter 8
+
+GATES FOR CI (chapter 9)
+--------------------------------------------------------------------
+  trivy fs --severity HIGH,CRITICAL --exit-code 1 <folder>
+  trivy image --severity CRITICAL --exit-code 1 <image>
+  trivy fs --ignore-unfixed <folder>
+                                   # hide findings with no fix
+  # .trivyignore, in the scanned folder - one ID per line:
+  #   # reason, with a review date
+  #   CVE-2021-44906
+
+REPORTS AND SBOMS (chapter 10)
+--------------------------------------------------------------------
+  trivy fs --format json --output report.json <folder>
+  trivy fs --format cyclonedx --output sbom.json <folder>
+                                   # inventory only - scanning
+                                   # is OFF in SBOM formats
+  trivy fs --format cyclonedx --scanners vuln \
+    --output sbom-full.json <folder>
+                                   # inventory + findings
+  trivy sbom sbom.json             # re-judge a kept SBOM
+                                   # against today's database

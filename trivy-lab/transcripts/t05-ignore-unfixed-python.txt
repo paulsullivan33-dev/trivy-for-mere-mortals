@@ -1,0 +1,580 @@
+$ trivy fs --ignore-unfixed trivy-lab/fixtures/oldpy
+2026-10-28T05:20:56Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-10-28T05:20:56Z	INFO	[secret] Secret scanning is enabled
+2026-10-28T05:20:56Z	INFO	[secret] If your scanning is slow, please try '--scanners vuln' to disable secret scanning
+2026-10-28T05:20:56Z	INFO	[secret] Please see https://trivy.dev/docs/v0.76/guide/scanner/secret#recommendation for faster secret detection
+2026-10-28T05:20:56Z	WARN	[pip] Unable to find python `site-packages` directory. License detection is skipped.	err="site-packages directory not found"
+2026-10-28T05:20:56Z	INFO	Number of language-specific files	num=1
+2026-10-28T05:20:56Z	INFO	[pip] Detecting vulnerabilities...
+
+Report Summary
+
+┌──────────────────┬──────┬─────────────────┬─────────┐
+│      Target      │ Type │ Vulnerabilities │ Secrets │
+├──────────────────┼──────┼─────────────────┼─────────┤
+│ requirements.txt │ pip  │       147       │    -    │
+└──────────────────┴──────┴─────────────────┴─────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+
+requirements.txt (pip)
+======================
+Total: 147 (UNKNOWN: 0, LOW: 5, MEDIUM: 48, HIGH: 73, CRITICAL: 21)
+
+┌──────────┬─────────────────────┬──────────┬────────┬───────────────────┬────────────────────────┬──────────────────────────────────────────────────────────────┐
+│ Library  │    Vulnerability    │ Severity │ Status │ Installed Version │     Fixed Version      │                            Title                             │
+├──────────┼─────────────────────┼──────────┼────────┼───────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ Django   │ CVE-2019-14234      │ CRITICAL │ fixed  │ 2.2.0             │ 1.11.23, 2.1.11, 2.2.4 │ Django: SQL injection possibility in key and index lookups   │
+│          │                     │          │        │                   │                        │ for JSONField/HStoreField                                    │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2019-14234                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2019-19844      │          │        │                   │ 1.11.27, 2.2.9, 3.0.1  │ Django: crafted email address allows account takeover        │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2019-19844                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2020-7471       │          │        │                   │ 1.11.28, 2.2.10, 3.0.3 │ django: potential SQL injection via StringAgg(delimiter)     │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2020-7471                    │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2022-28346      │          │        │                   │ 2.2.28, 3.2.13, 4.0.4  │ Django: SQL injection in QuerySet.annotate(),aggregate() and │
+│          │                     │          │        │                   │                        │ extra()                                                      │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2022-28346                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2022-28347      │          │        │                   │                        │ Django: SQL injection via QuerySet.explain(options) on       │
+│          │                     │          │        │                   │                        │ PostgreSQL                                                   │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2022-28347                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2025-64459      │          │        │                   │ 5.2.8, 5.1.14, 4.2.26  │ django: Django SQL injection                                 │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2025-64459                   │
+│          ├─────────────────────┼──────────┤        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2019-14232      │ HIGH     │        │                   │ 1.11.23, 2.1.11, 2.2.4 │ Django: backtracking in a regular expression in              │
+│          │                     │          │        │                   │                        │ django.utils.text.Truncator leads to DoS                     │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2019-14232                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2019-14233      │          │        │                   │                        │ Django: the behavior of the underlying HTMLParser leading to │
+│          │                     │          │        │                   │                        │ DoS                                                          │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2019-14233                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2019-14235      │          │        │                   │                        │ Django: Potential memory exhaustion in                       │
+│          │                     │          │        │                   │                        │ django.utils.encoding.uri_to_iri()                           │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2019-14235                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2019-19118      │          │        │                   │ 2.1.15, 2.2.8          │ django: privilege escalation in the django admin             │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2019-19118                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2020-13254      │          │        │                   │ 2.2.13, 3.0.7          │ django: potential data leakage via malformed memcached keys  │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2020-13254                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2020-24583      │          │        │                   │ 2.2.16, 3.0.10, 3.1.1  │ django: incorrect permissions on intermediate-level          │
+│          │                     │          │        │                   │                        │ directories on Python 3.7+                                   │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2020-24583                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2020-9402       │          │        │                   │ 1.11.29, 2.2.11, 3.0.4 │ django: potential SQL injection via "tolerance" parameter in │
+│          │                     │          │        │                   │                        │ GIS functions and aggregates...                              │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2020-9402                    │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-31542      │          │        │                   │ 2.2.21, 3.1.9, 3.2.1   │ django: Potential directory-traversal via uploaded files     │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-31542                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-33571      │          │        │                   │ 2.2.24, 3.1.12, 3.2.4  │ django: Possible indeterminate SSRF, RFI, and LFI attacks    │
+│          │                     │          │        │                   │                        │ since validators accepted leading...                         │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-33571                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-45115      │          │        │                   │ 2.2.26, 3.2.11, 4.0.1  │ django: Denial-of-service possibility in                     │
+│          │                     │          │        │                   │                        │ UserAttributeSimilarityValidator                             │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-45115                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-45116      │          │        │                   │                        │ django: Potential information disclosure in dictsort         │
+│          │                     │          │        │                   │                        │ template filter                                              │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-45116                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2022-23833      │          │        │                   │ 2.2.27, 3.2.12, 4.0.2  │ django: Denial-of-service possibility in file uploads        │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2022-23833                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2022-36359      │          │        │                   │ 3.2.15, 4.0.7          │ An issue was discovered in the HTTP FileResponse class in    │
+│          │                     │          │        │                   │                        │ Django 3.2...                                                │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2022-36359                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2025-57833      │          │        │                   │ 4.2.24, 5.1.12, 5.2.6  │ django: Django SQL injection in FilteredRelation column      │
+│          │                     │          │        │                   │                        │ aliases                                                      │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2025-57833                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2025-64458      │          │        │                   │ 5.2.8, 5.1.14, 4.2.26  │ Django: Denial-of-service vulnerability in Django on Windows │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2025-64458                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-15307      │          │        │                   │ 5.2.17, 6.0.8          │ django: Django: Remote code execution via GeoDjango spatial  │
+│          │                     │          │        │                   │                        │ lookups                                                      │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-15307                   │
+│          ├─────────────────────┼──────────┤        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2019-11358      │ MEDIUM   │        │                   │ 2.1.9, 2.2.2           │ jquery: Prototype pollution in object's prototype leading to │
+│          │                     │          │        │                   │                        │ denial of service, remote...                                 │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2019-11358                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2019-12308      │          │        │                   │ 1.11.21, 2.1.9, 2.2.2  │ django: missing URL validation by AdminURLFieldWidget leads  │
+│          │                     │          │        │                   │                        │ to generation of clickable unsafe...                         │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2019-12308                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2019-12781      │          │        │                   │ 2.1.10, 2.2.3, 1.11.22 │ Django: Incorrect HTTP detection with reverse-proxy          │
+│          │                     │          │        │                   │                        │ connecting via HTTPS                                         │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2019-12781                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2020-13596      │          │        │                   │ 2.2.13, 3.0.7          │ django: possible XSS via admin ForeignKeyRawIdWidget         │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2020-13596                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2020-24584      │          │        │                   │ 2.2.16, 3.0.10, 3.1.1  │ django: permission escalation in intermediate-level          │
+│          │                     │          │        │                   │                        │ directories of the file system cache on...                   │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2020-24584                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-28658      │          │        │                   │ 2.2.20, 3.0.14, 3.1.8  │ django: potential directory-traversal via uploaded files     │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-28658                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-32052      │          │        │                   │ 2.2.22, 3.1.10, 3.2.2  │ django: header injection possibility since URLValidator      │
+│          │                     │          │        │                   │                        │ accepted newlines in input on Python...                      │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-32052                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-3281       │          │        │                   │ 2.2.18, 3.1.6, 3.0.12  │ django: Potential directory-traversal via archive.extract()  │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-3281                    │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-33203      │          │        │                   │ 2.2.24, 3.1.12, 3.2.4  │ django: Potential directory traversal via ``admindocs``      │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-33203                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-44420      │          │        │                   │ 2.2.25, 3.1.14, 3.2.10 │ django: potential bypass of an upstream access control based │
+│          │                     │          │        │                   │                        │ on URL paths...                                              │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-44420                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-45452      │          │        │                   │ 2.2.26, 3.2.11, 4.0.1  │ django: Potential directory-traversal via Storage.save()     │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-45452                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2022-22818      │          │        │                   │ 2.2.27, 3.2.12, 4.0.2  │ django: Possible XSS via '{% debug %}' template tag          │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2022-22818                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2024-45231      │          │        │                   │ 5.1.1, 5.0.9, 4.2.16   │ python-django: Potential user email enumeration via response │
+│          │                     │          │        │                   │                        │ status on password reset                                     │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2024-45231                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2025-48432      │          │        │                   │ 5.2.2, 5.1.10, 4.2.22  │ django: Django Path Injection Vulnerability                  │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2025-48432                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-15830      │          │        │                   │ 5.2.17, 6.0.8, 6.1.1   │ django: Django: Denial of Service via parsing deeply nested  │
+│          │                     │          │        │                   │                        │ geometry collections                                         │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-15830                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-53877      │          │        │                   │ 5.2.16, 6.0.7          │ django: Django: Information disclosure via heap buffer       │
+│          │                     │          │        │                   │                        │ over-read in GDALRaster                                      │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-53877                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-53878      │          │        │                   │                        │ django: Django: HTTP header injection via                    │
+│          │                     │          │        │                   │                        │ DomainNameValidator accepting newlines                       │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-53878                   │
+│          ├─────────────────────┼──────────┤        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-48587      │ LOW      │        │                   │ 5.2.15, 6.0.6          │ django: Django: Information disclosure via improper handling │
+│          │                     │          │        │                   │                        │ of Vary header whitespace                                    │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-48587                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-48588      │          │        │                   │ 5.2.16, 6.0.7          │ django: Django: Information disclosure due to improper       │
+│          │                     │          │        │                   │                        │ caching of Set-Cookie responses                              │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-48588                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-6873       │          │        │                   │ 5.2.15, 6.0.6          │ python-django: Django: Information disclosure via            │
+│          │                     │          │        │                   │                        │ non-injective cookie salt derivation                         │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-6873                    │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-8404       │          │        │                   │                        │ Django: Django: Information disclosure due to improper       │
+│          │                     │          │        │                   │                        │ handling of Cache-Control directives                         │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-8404                    │
+├──────────┼─────────────────────┼──────────┤        ├───────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ Jinja2   │ CVE-2020-28493      │ MEDIUM   │        │ 2.10.1            │ 2.11.3                 │ python-jinja2: ReDoS vulnerability in the urlize filter      │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2020-28493                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2024-22195      │          │        │                   │ 3.1.3                  │ jinja2: HTML attribute injection when passing user input as  │
+│          │                     │          │        │                   │                        │ keys to xmlattr...                                           │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2024-22195                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2024-34064      │          │        │                   │ 3.1.4                  │ jinja2: accepts keys containing non-attribute characters     │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2024-34064                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2024-56326      │          │        │                   │ 3.1.5                  │ jinja2: Jinja has a sandbox breakout through indirect        │
+│          │                     │          │        │                   │                        │ reference to format method...                                │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2024-56326                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2025-27516      │          │        │                   │ 3.1.6                  │ jinja2: Jinja sandbox breakout through attr filter selecting │
+│          │                     │          │        │                   │                        │ format method                                                │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2025-27516                   │
+├──────────┼─────────────────────┼──────────┤        ├───────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ Pillow   │ CVE-2020-11538      │ CRITICAL │        │ 5.4.1             │ 7.1.0                  │ python-pillow: out-of-bounds reads/writes in the parsing of  │
+│          │                     │          │        │                   │                        │ SGI image files in expandrow/expandrow2...                   │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2020-11538                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2020-5310       │          │        │                   │ 6.2.2                  │ python-pillow: Integer overflow leading to buffer overflow   │
+│          │                     │          │        │                   │                        │ in ImagingLibTiffDecode                                      │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2020-5310                    │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2020-5311       │          │        │                   │                        │ python-pillow: out-of-bounds write in expandrow in           │
+│          │                     │          │        │                   │                        │ libImaging/SgiRleDecode.c                                    │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2020-5311                    │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2020-5312       │          │        │                   │                        │ python-pillow: improperly restricted operations on memory    │
+│          │                     │          │        │                   │                        │ buffer in libImaging/PcxDecode.c                             │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2020-5312                    │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-25289      │          │        │                   │ 8.1.1                  │ python-pillow: insufficent fix for CVE-2020-35654 due to     │
+│          │                     │          │        │                   │                        │ incorrect error checking in TiffDecode.c...                  │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-25289                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-34552      │          │        │                   │ 8.3.0                  │ python-pillow: Buffer overflow in image convert function     │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-34552                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2022-22817      │          │        │                   │ 9.0.1                  │ python-pillow: PIL.ImageMath.eval allows evaluation of       │
+│          │                     │          │        │                   │                        │ arbitrary expressions                                        │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2022-22817                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2023-50447      │          │        │                   │ 10.2.0                 │ pillow: Arbitrary Code Execution via the environment         │
+│          │                     │          │        │                   │                        │ parameter                                                    │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2023-50447                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-112393     │          │        │                   │ 13.0.0                 │ Pillow is a Python imaging library. From 2.0.0 until 13.0.0, │
+│          │                     │          │        │                   │                        │ Pillow ha...                                                 │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-112393                  │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-112398     │          │        │                   │                        │ Pillow is a Python imaging library. Prior to 13.0.0,         │
+│          │                     │          │        │                   │                        │ Pillow's FlashPix ......                                     │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-112398                  │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-112403     │          │        │                   │                        │ Pillow is a Python imaging library. Prior to 13.0.0,         │
+│          │                     │          │        │                   │                        │ Pillow's JPEG dec...                                         │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-112403                  │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-112900     │          │        │                   │                        │ Pillow is a Python imaging library. From 2.6.0 until 13.0.0, │
+│          │                     │          │        │                   │                        │ Pillow is...                                                 │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-112900                  │
+│          ├─────────────────────┼──────────┤        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2019-16865      │ HIGH     │        │                   │ 6.2.0                  │ python-pillow: reading specially crafted image files leads   │
+│          │                     │          │        │                   │                        │ to allocation of large amounts...                            │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2019-16865                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2019-19911      │          │        │                   │ 6.2.2                  │ python-pillow: uncontrolled resource consumption in          │
+│          │                     │          │        │                   │                        │ FpxImagePlugin.py                                            │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2019-19911                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2020-10177      │          │        │                   │ 7.1.0                  │ python-pillow: multiple out-of-bounds reads in               │
+│          │                     │          │        │                   │                        │ libImaging/FliDecode.c                                       │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2020-10177                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2020-10378      │          │        │                   │                        │ python-pillow: an out-of-bounds read in                      │
+│          │                     │          │        │                   │                        │ libImaging/PcxDecode.c can occur when reading PCX files...   │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2020-10378                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2020-10379      │          │        │                   │                        │ python-pillow: two buffer overflows in                       │
+│          │                     │          │        │                   │                        │ libImaging/TiffDecode.c due to small buffers allocated in... │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2020-10379                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2020-10994      │          │        │                   │                        │ python-pillow: multiple out-of-bounds reads via a crafted    │
+│          │                     │          │        │                   │                        │ JP2 file                                                     │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2020-10994                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2020-35653      │          │        │                   │ 8.1.0                  │ python-pillow: Buffer over-read in PCX image reader          │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2020-35653                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2020-35654      │          │        │                   │                        │ python-pillow: decoding crafted YCbCr files could result in  │
+│          │                     │          │        │                   │                        │ heap-based buffer overflow                                   │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2020-35654                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2020-5313       │          │        │                   │ 6.2.2                  │ python-pillow: out-of-bounds read in ImagingFliDecode when   │
+│          │                     │          │        │                   │                        │ loading FLI images                                           │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2020-5313                    │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-23437      │          │        │                   │ 8.3.2                  │ python-pillow: possible ReDoS via the getrgb function        │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-23437                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-25287      │          │        │                   │ 8.2.0                  │ python-pillow: Out-of-bounds read in J2K image reader        │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-25287                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-25288      │          │        │                   │                        │ python-pillow: Out-of-bounds read in J2K image reader        │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-25288                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-25290      │          │        │                   │ 8.1.1                  │ python-pillow: Negative-offset memcpy in TIFF image reader   │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-25290                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-25291      │          │        │                   │ 8.2.0                  │ python-pillow: out-of-bounds read in TiffReadRGBATile in     │
+│          │                     │          │        │                   │                        │ TiffDecode.c                                                 │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-25291                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-25293      │          │        │                   │ 8.1.1                  │ python-pillow: Out-of-bounds read in SGI RLE image reader    │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-25293                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-27921      │          │        │                   │ 8.1.2                  │ python-pillow: Excessive memory allocation in BLP image      │
+│          │                     │          │        │                   │                        │ reader                                                       │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-27921                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-27922      │          │        │                   │                        │ python-pillow: Excessive memory allocation in ICNS image     │
+│          │                     │          │        │                   │                        │ reader                                                       │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-27922                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-27923      │          │        │                   │                        │ python-pillow: Excessive memory allocation in ICO image      │
+│          │                     │          │        │                   │                        │ reader                                                       │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-27923                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-28675      │          │        │                   │ 8.2.0                  │ python-pillow: Excessive memory allocation in PSD image      │
+│          │                     │          │        │                   │                        │ reader                                                       │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-28675                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-28676      │          │        │                   │                        │ python-pillow: Infinite loop in FLI image reader             │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-28676                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-28677      │          │        │                   │                        │ python-pillow: Excessive CPU use in EPS image reader         │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-28677                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2022-24303      │          │        │                   │ 9.0.1                  │ python-pillow: temporary directory with a space character    │
+│          │                     │          │        │                   │                        │ allows removal of unrelated file...                          │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2022-24303                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2022-45198      │          │        │                   │ 9.2.0                  │ Pillow before 9.2.0 performs Improper Handling of Highly     │
+│          │                     │          │        │                   │                        │ Compressed GI ...                                            │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2022-45198                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2023-44271      │          │        │                   │ 10.0.0                 │ python-pillow: uncontrolled resource consumption when        │
+│          │                     │          │        │                   │                        │ textlength in an ImageDraw instance operates on...           │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2023-44271                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2023-4863       │          │        │                   │ 10.0.1                 │ libwebp: Heap buffer overflow in WebP Codec                  │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2023-4863                    │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2024-28219      │          │        │                   │ 10.3.0                 │ python-pillow: buffer overflow in _imagingcms.c              │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2024-28219                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-112392     │          │        │                   │ 13.0.0                 │ pillow: pillow: Denial of Service via zero-size images in    │
+│          │                     │          │        │                   │                        │ rank filters                                                 │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-112392                  │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-112397     │          │        │                   │                        │ pillow: pillow: Denial of Service via out-of-bounds memory   │
+│          │                     │          │        │                   │                        │ access on zero-width images...                               │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-112397                  │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-112402     │          │        │                   │                        │ pillow: pillow: Denial of service via double free during     │
+│          │                     │          │        │                   │                        │ image transformation                                         │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-112402                  │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-112406     │          │        │                   │                        │ pillow: pillow: Denial of Service via infinite loop during   │
+│          │                     │          │        │                   │                        │ PDF page rewriting...                                        │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-112406                  │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-112892     │          │        │                   │                        │ pillow: pillow: Denial of Service via unbounded memory       │
+│          │                     │          │        │                   │                        │ expansion in MSP image...                                    │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-112892                  │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-112894     │          │        │                   │                        │ pillow: pillow: Denial of Service via crafted multi-frame    │
+│          │                     │          │        │                   │                        │ image conversion                                             │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-112894                  │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-112895     │          │        │                   │                        │ pillow: pillow: Denial of service via crafted PDF during     │
+│          │                     │          │        │                   │                        │ append operations                                            │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-112895                  │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-112896     │          │        │                   │                        │ pillow: Pillow: Denial of Service via out-of-bounds read in  │
+│          │                     │          │        │                   │                        │ TIFF encoder                                                 │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-112896                  │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-112897     │          │        │                   │                        │ pillow: pillow: Information disclosure via uninitialized     │
+│          │                     │          │        │                   │                        │ buffer in TIFF decoding                                      │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-112897                  │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-112902     │          │        │                   │                        │ Pillow: Memory disclosure and segfault in libtiff encoder    │
+│          │                     │          │        │                   │                        │ via crafted TIFF...                                          │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-112902                  │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-54058      │          │        │                   │ 12.3.0                 │ Pillow: Pillow: Memory disclosure or denial of service via   │
+│          │                     │          │        │                   │                        │ crafted McIdas AREA...                                       │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-54058                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-54059      │          │        │                   │                        │ python-pillow: Pillow: Denial of Service via crafted PCF     │
+│          │                     │          │        │                   │                        │ font data                                                    │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-54059                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-54060      │          │        │                   │                        │ python-pillow: Pillow: Denial of Service via excessive       │
+│          │                     │          │        │                   │                        │ memory allocation when processing font...                    │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-54060                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-55379      │          │        │                   │                        │ python-pillow: Pillow: Denial of Service via crafted BDF     │
+│          │                     │          │        │                   │                        │ font file                                                    │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-55379                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-55380      │          │        │                   │                        │ python-pillow: Pillow: Denial of Service via crafted GD 2.x  │
+│          │                     │          │        │                   │                        │ image file                                                   │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-55380                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-59197      │          │        │                   │                        │ Pillow: Pillow: Native heap out-of-bounds write              │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-59197                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-59199      │          │        │                   │                        │ Pillow: Pillow: Denial of Service via out-of-bounds write in │
+│          │                     │          │        │                   │                        │ image processing                                             │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-59199                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-59200      │          │        │                   │                        │ Pillow: Pillow: Denial of service via crafted PDF stream     │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-59200                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-59205      │          │        │                   │                        │ Pillow: Pillow: Controlled native heap corruption in         │
+│          │                     │          │        │                   │                        │ ImageCms.ImageCmsTransform.apply API                         │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-59205                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-96637      │          │        │                   │ 13.0.0                 │ pillow: pillow: Denial of Service via decompression bomb     │
+│          │                     │          │        │                   │                        │ bypass in SPIDER images...                                   │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-96637                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-96640      │          │        │                   │                        │ pillow: pillow: Denial of Service via duplicate page         │
+│          │                     │          │        │                   │                        │ references in PDF files...                                   │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-96640                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-96642      │          │        │                   │                        │ pillow: Pillow: Denial of Service via negative archive       │
+│          │                     │          │        │                   │                        │ member size in TarIO...                                      │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-96642                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-96644      │          │        │                   │                        │ pillow: Pillow: Denial of Service via out-of-bounds read in  │
+│          │                     │          │        │                   │                        │ metafile parser                                              │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-96644                   │
+│          ├─────────────────────┼──────────┤        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2020-35655      │ MEDIUM   │        │                   │ 8.1.0                  │ python-pillow: Buffer over-read in SGI RLE image reader      │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2020-35655                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-25292      │          │        │                   │ 8.1.1                  │ python-pillow: Regular expression DoS in PDF format parser   │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-25292                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-28678      │          │        │                   │ 8.2.0                  │ python-pillow: Excessive looping in BLP image reader         │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2021-28678                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2022-22815      │          │        │                   │ 9.0.0                  │ python-pillow: improperly initializes ImagePath.Path in      │
+│          │                     │          │        │                   │                        │ path_getbbox() in path.c                                     │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2022-22815                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2022-22816      │          │        │                   │                        │ python-pillow: buffer over-read during initialization of     │
+│          │                     │          │        │                   │                        │ ImagePath.Path in path_getbbox() in path.c                   │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2022-22816                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-112391     │          │        │                   │ 13.0.0                 │ pillow: Pillow: Denial of Service via unbounded recursion in │
+│          │                     │          │        │                   │                        │ PDF parser                                                   │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-112391                  │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-112394     │          │        │                   │                        │ pillow: pillow: Information disclosure via out-of-bounds     │
+│          │                     │          │        │                   │                        │ read in raw decoders                                         │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-112394                  │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-112401     │          │        │                   │                        │ pillow: pillow: Denial of Service via crafted GIF comments   │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-112401                  │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-112899     │          │        │                   │                        │ Pillow: EPS load(scale) lets Ghostscript render past the     │
+│          │                     │          │        │                   │                        │ decompression bomb limit                                     │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-112899                  │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-112901     │          │        │                   │                        │ pillow: Pillow: Denial of Service via crafted XBM image      │
+│          │                     │          │        │                   │                        │ header                                                       │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-112901                  │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-42308      │          │        │                   │ 12.2.0                 │ Pillow: Pillow: Denial of Service via integer overflow in    │
+│          │                     │          │        │                   │                        │ font processing                                              │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-42308                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-42310      │          │        │                   │                        │ Pillow: Pillow: Denial of Service via malicious PDF          │
+│          │                     │          │        │                   │                        │ processing                                                   │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-42310                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-55798      │          │        │                   │ 12.3.0                 │ python-pillow: Pillow: Arbitrary command injection via shell │
+│          │                     │          │        │                   │                        │ metacharacters in file paths                                 │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-55798                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-59198      │          │        │                   │                        │ Pillow: Pillow: Information disclosure via TGA RLE encoder   │
+│          │                     │          │        │                   │                        │ out-of-bounds read                                           │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-59198                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-96636      │          │        │                   │ 13.0.0                 │ pillow: pillow: Denial of Service via decompression bomb     │
+│          │                     │          │        │                   │                        │ check bypass in multi-frame...                               │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-96636                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-96641      │          │        │                   │                        │ pillow: pillow: Denial of Service via integer overflow in    │
+│          │                     │          │        │                   │                        │ text-width calculation                                       │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-96641                   │
+│          ├─────────────────────┼──────────┤        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ GHSA-4fx9-vc88-q2xc │ LOW      │        │                   │ 9.0.0                  │ Infinite loop in Pillow                                      │
+│          │                     │          │        │                   │                        │ https://github.com/advisories/GHSA-4fx9-vc88-q2xc            │
+├──────────┼─────────────────────┼──────────┤        ├───────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ PyYAML   │ CVE-2019-20477      │ CRITICAL │        │ 5.1               │ 5.2                    │ PyYAML: command execution through python/object/apply        │
+│          │                     │          │        │                   │                        │ constructor in FullLoader                                    │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2019-20477                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2020-14343      │          │        │                   │ 5.4                    │ PyYAML: incomplete fix for CVE-2020-1747                     │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2020-14343                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2020-1747       │          │        │                   │ 5.3.1                  │ PyYAML: arbitrary command execution through                  │
+│          │                     │          │        │                   │                        │ python/object/new when FullLoader is used                    │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2020-1747                    │
+├──────────┼─────────────────────┼──────────┤        ├───────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ requests │ CVE-2018-18074      │ HIGH     │        │ 2.19.1            │ 2.20.0                 │ python-requests: Redirect from HTTPS to HTTP does not remove │
+│          │                     │          │        │                   │                        │ Authorization header                                         │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2018-18074                   │
+│          ├─────────────────────┼──────────┤        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2023-32681      │ MEDIUM   │        │                   │ 2.31.0                 │ python-requests: Unintended leak of Proxy-Authorization      │
+│          │                     │          │        │                   │                        │ header                                                       │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2023-32681                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2024-35195      │          │        │                   │ 2.32.0                 │ requests: subsequent requests to the same host ignore cert   │
+│          │                     │          │        │                   │                        │ verification                                                 │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2024-35195                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2024-47081      │          │        │                   │ 2.32.4                 │ requests: Requests vulnerable to .netrc credentials leak via │
+│          │                     │          │        │                   │                        │ malicious URLs                                               │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2024-47081                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-25645      │          │        │                   │ 2.33.0                 │ requests: Requests: Security bypass due to predictable       │
+│          │                     │          │        │                   │                        │ temporary file creation                                      │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-25645                   │
+├──────────┼─────────────────────┼──────────┤        ├───────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ urllib3  │ CVE-2019-11324      │ HIGH     │        │ 1.24.1            │ 1.24.2                 │ python-urllib3: Certification mishandle when error should be │
+│          │                     │          │        │                   │                        │ thrown                                                       │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2019-11324                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2023-43804      │          │        │                   │ 2.0.6, 1.26.17         │ python-urllib3: Cookie request header isn't stripped during  │
+│          │                     │          │        │                   │                        │ cross-origin redirects                                       │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2023-43804                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2025-66418      │          │        │                   │ 2.6.0                  │ urllib3: urllib3: Unbounded decompression chain leads to     │
+│          │                     │          │        │                   │                        │ resource exhaustion                                          │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2025-66418                   │
+│          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2025-66471      │          │        │                   │                        │ urllib3: urllib3 Streaming API improperly handles highly     │
+│          │                     │          │        │                   │                        │ compressed data                                              │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2025-66471                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-21441      │          │        │                   │ 2.6.3                  │ urllib3: urllib3 vulnerable to decompression-bomb safeguard  │
+│          │                     │          │        │                   │                        │ bypass when following HTTP redirects (streaming...           │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-21441                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-44431      │          │        │                   │ 2.7.0                  │ urllib3: urllib3: Information disclosure via cross-origin    │
+│          │                     │          │        │                   │                        │ redirects forwarding sensitive headers                       │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-44431                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-97689      │          │        │                   │ 2.8.0                  │ urllib3: urllib3: Denial of Service via unbounded memory     │
+│          │                     │          │        │                   │                        │ allocation in chunk parser...                                │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-97689                   │
+│          ├─────────────────────┼──────────┤        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2018-25091      │ MEDIUM   │        │                   │ 1.24.2                 │ urllib3: urllib3 does not remove the authorization HTTP      │
+│          │                     │          │        │                   │                        │ header when following a...                                   │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2018-25091                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2019-11236      │          │        │                   │ 1.24.3                 │ python-urllib3: CRLF injection due to not encoding the       │
+│          │                     │          │        │                   │                        │ '\r\n' sequence leading to...                                │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2019-11236                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2020-26137      │          │        │                   │ 1.25.9                 │ python-urllib3: CRLF injection via HTTP request method       │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2020-26137                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2023-45803      │          │        │                   │ 2.0.7, 1.26.18         │ urllib3: Request body not stripped after redirect from 303   │
+│          │                     │          │        │                   │                        │ status changes request...                                    │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2023-45803                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2024-37891      │          │        │                   │ 1.26.19, 2.2.2         │ urllib3: proxy-authorization request header is not stripped  │
+│          │                     │          │        │                   │                        │ during cross-origin redirects                                │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2024-37891                   │
+│          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2025-50181      │          │        │                   │ 2.5.0                  │ urllib3: urllib3 redirects are not disabled when retries are │
+│          │                     │          │        │                   │                        │ disabled on PoolManager...                                   │
+│          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2025-50181                   │
+└──────────┴─────────────────────┴──────────┴────────┴───────────────────┴────────────────────────┴──────────────────────────────────────────────────────────────┘
+exit code: 0

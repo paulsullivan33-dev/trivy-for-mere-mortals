@@ -1,0 +1,8 @@
+Scratch notes for the sample deployment (FICTIONAL - example
+credentials copied from the AWS documentation's own examples,
+which exist precisely so that nobody has to use real ones):
+
+  aws_access_key_id     = AKIAIOSFODNN7EXAMPLE
+  aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+
+TODO: move these into the vault before this file travels.

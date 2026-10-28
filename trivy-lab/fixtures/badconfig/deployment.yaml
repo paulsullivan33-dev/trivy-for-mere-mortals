@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: example-web
+  template:
+    metadata:
+      labels:
+        app: example-web
+    spec:
+      hostNetwork: true
+      containers:
+        - name: web
+          image: example/web:latest
+          securityContext:
+            privileged: true
+            runAsUser: 0

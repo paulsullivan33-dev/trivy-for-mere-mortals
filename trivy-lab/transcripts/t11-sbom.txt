@@ -1,0 +1,42 @@
+$ trivy fs --format cyclonedx --output trivy-lab/oldpy-sbom.json trivy-lab/fixtures/oldpy
+2026-10-28T05:21:15Z	INFO	"--format cyclonedx" disables security scanning. Specify "--scanners vuln" explicitly if you want to include vulnerabilities in the "cyclonedx" report.
+2026-10-28T05:21:15Z	WARN	[pip] Unable to find python `site-packages` directory. License detection is skipped.	err="site-packages directory not found"
+2026-10-28T05:21:15Z	INFO	Number of language-specific files	num=1
+exit code: 0
+
+$ head -c 700 trivy-lab/oldpy-sbom.json
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.7",
+  "serialNumber": "urn:uuid:f4e4175c-c39f-4331-89ed-f45c4c4453ed",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-28T05:21:15+00:00",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "manufacturer": {
+            "name": "Aqua Security Software Ltd."
+          },
+          "group": "aquasecurity",
+          "name": "trivy",
+          "version": "0.76.1"
+        }
+      ]
+    },
+    "component": {
+      "bom-ref": "2ea0d414-5f1b-4a34-8eae-e67f57c2874b",
+      "type": "application",
+      "name": "trivy-lab/fixtures/oldpy",
+  
+
+$ python3 -c "..."   # count components and vulnerabilities
+bomFormat: CycloneDX | specVersion: 1.7
+components: 7
+vulnerabilities listed: 0
+
+$ trivy fs --format cyclonedx --scanners vuln --output trivy-lab/oldpy-sbom-vuln.json trivy-lab/fixtures/oldpy
+components: 7
+vulnerabilities listed: 147

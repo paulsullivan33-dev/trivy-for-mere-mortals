@@ -1,0 +1,15 @@
+$ trivy --version
+Version: 0.76.1
+Vulnerability DB:
+  Version: 2
+  UpdatedAt: 2026-10-28 01:21:08.391884645 +0000 UTC
+  NextUpdate: 2026-10-29 01:21:08.391884123 +0000 UTC
+  DownloadedAt: 2026-10-28 05:20:55.466077415 +0000 UTC
+
+$ trivy version
+Version: 0.76.1
+Vulnerability DB:
+  Version: 2
+  UpdatedAt: 2026-10-28 01:21:08.391884645 +0000 UTC
+  NextUpdate: 2026-10-29 01:21:08.391884123 +0000 UTC
+  DownloadedAt: 2026-10-28 05:20:55.466077415 +0000 UTC

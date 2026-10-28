@@ -1,0 +1,40 @@
+$ trivy fs --severity CRITICAL --exit-code 1 trivy-lab/fixtures/oldjs
+
+Report Summary
+
+┌───────────────────┬──────┬─────────────────┬─────────┐
+│      Target       │ Type │ Vulnerabilities │ Secrets │
+├───────────────────┼──────┼─────────────────┼─────────┤
+│ package-lock.json │ npm  │        1        │    -    │
+└───────────────────┴──────┴─────────────────┴─────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+
+package-lock.json (npm)
+=======================
+Total: 1 (CRITICAL: 1)
+
+┌──────────┬────────────────┬──────────┬────────┬───────────────────┬───────────────┬────────────────────────────────────────────┐
+│ Library  │ Vulnerability  │ Severity │ Status │ Installed Version │ Fixed Version │                   Title                    │
+├──────────┼────────────────┼──────────┼────────┼───────────────────┼───────────────┼────────────────────────────────────────────┤
+│ minimist │ CVE-2021-44906 │ CRITICAL │ fixed  │ 0.0.8             │ 1.2.6, 0.2.4  │ minimist: prototype pollution              │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2021-44906 │
+└──────────┴────────────────┴──────────┴────────┴───────────────────┴───────────────┴────────────────────────────────────────────┘
+exit code: 1
+
+$ trivy fs --severity CRITICAL --exit-code 1 trivy-lab/fixtures/cleanpy
+
+Report Summary
+
+┌──────────────────┬──────┬─────────────────┬─────────┐
+│      Target      │ Type │ Vulnerabilities │ Secrets │
+├──────────────────┼──────┼─────────────────┼─────────┤
+│ requirements.txt │ pip  │        0        │    -    │
+└──────────────────┴──────┴─────────────────┴─────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+exit code: 0

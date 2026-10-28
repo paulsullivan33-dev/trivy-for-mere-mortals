@@ -1,0 +1,66 @@
+$ trivy fs trivy-lab/fixtures/oldjs
+2026-10-28T05:20:56Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-10-28T05:20:56Z	INFO	[secret] Secret scanning is enabled
+2026-10-28T05:20:56Z	INFO	[secret] If your scanning is slow, please try '--scanners vuln' to disable secret scanning
+2026-10-28T05:20:56Z	INFO	[secret] Please see https://trivy.dev/docs/v0.76/guide/scanner/secret#recommendation for faster secret detection
+2026-10-28T05:20:56Z	INFO	[npm] Run "npm install" to collect the license information of packages	dir="node_modules"
+2026-10-28T05:20:56Z	INFO	Number of language-specific files	num=1
+2026-10-28T05:20:56Z	INFO	[npm] Detecting vulnerabilities...
+
+Report Summary
+
+┌───────────────────┬──────┬─────────────────┬─────────┐
+│      Target       │ Type │ Vulnerabilities │ Secrets │
+├───────────────────┼──────┼─────────────────┼─────────┤
+│ package-lock.json │ npm  │       11        │    -    │
+└───────────────────┴──────┴─────────────────┴─────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+
+package-lock.json (npm)
+=======================
+Total: 11 (UNKNOWN: 0, LOW: 0, MEDIUM: 4, HIGH: 6, CRITICAL: 1)
+
+┌──────────┬────────────────┬──────────┬────────┬───────────────────┬─────────────────────┬──────────────────────────────────────────────────────────────┐
+│ Library  │ Vulnerability  │ Severity │ Status │ Installed Version │    Fixed Version    │                            Title                             │
+├──────────┼────────────────┼──────────┼────────┼───────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────┤
+│ ini      │ CVE-2020-7788  │ HIGH     │ fixed  │ 1.3.5             │ 1.3.6               │ nodejs-ini: Prototype pollution via malicious INI file       │
+│          │                │          │        │                   │                     │ https://avd.aquasec.com/nvd/cve-2020-7788                    │
+├──────────┼────────────────┤          │        ├───────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────┤
+│ lodash   │ CVE-2020-8203  │          │        │ 4.17.15           │ 4.17.19             │ nodejs-lodash: prototype pollution in zipObjectDeep function │
+│          │                │          │        │                   │                     │ https://avd.aquasec.com/nvd/cve-2020-8203                    │
+│          ├────────────────┤          │        │                   ├─────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2021-23337 │          │        │                   │ 4.17.21             │ nodejs-lodash: command injection via template                │
+│          │                │          │        │                   │                     │ https://avd.aquasec.com/nvd/cve-2021-23337                   │
+│          ├────────────────┤          │        │                   ├─────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-4800  │          │        │                   │ 4.18.0              │ lodash: lodash: Arbitrary code execution via untrusted input │
+│          │                │          │        │                   │                     │ in template imports                                          │
+│          │                │          │        │                   │                     │ https://avd.aquasec.com/nvd/cve-2026-4800                    │
+│          ├────────────────┤          │        │                   ├─────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ NSWG-ECO-516   │          │        │                   │ >=4.17.19           │ Allocation of Resources Without Limits or Throttling         │
+│          │                │          │        │                   │                     │ https://www.npmjs.com/advisories/1523                        │
+│          ├────────────────┼──────────┤        │                   ├─────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2020-28500 │ MEDIUM   │        │                   │ 4.17.21             │ nodejs-lodash: ReDoS via the toNumber, trim and trimEnd      │
+│          │                │          │        │                   │                     │ functions                                                    │
+│          │                │          │        │                   │                     │ https://avd.aquasec.com/nvd/cve-2020-28500                   │
+│          ├────────────────┤          │        │                   ├─────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2025-13465 │          │        │                   │ 4.17.23             │ lodash: prototype pollution in _.unset and _.omit functions  │
+│          │                │          │        │                   │                     │ https://avd.aquasec.com/nvd/cve-2025-13465                   │
+│          ├────────────────┤          │        │                   ├─────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-2950  │          │        │                   │ 4.18.0              │ lodash: Lodash: Prototype pollution allows deletion of       │
+│          │                │          │        │                   │                     │ built-in prototype properties via array...                   │
+│          │                │          │        │                   │                     │ https://avd.aquasec.com/nvd/cve-2026-2950                    │
+├──────────┼────────────────┼──────────┤        ├───────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────┤
+│ minimist │ CVE-2021-44906 │ CRITICAL │        │ 0.0.8             │ 1.2.6, 0.2.4        │ minimist: prototype pollution                                │
+│          │                │          │        │                   │                     │ https://avd.aquasec.com/nvd/cve-2021-44906                   │
+│          ├────────────────┼──────────┤        │                   ├─────────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2020-7598  │ MEDIUM   │        │                   │ 0.2.1, 1.2.3        │ nodejs-minimist: prototype pollution allows adding or        │
+│          │                │          │        │                   │                     │ modifying properties of Object.prototype using a...          │
+│          │                │          │        │                   │                     │ https://avd.aquasec.com/nvd/cve-2020-7598                    │
+├──────────┼────────────────┼──────────┤        ├───────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────┤
+│ y18n     │ CVE-2020-7774  │ HIGH     │        │ 4.0.0             │ 3.2.2, 4.0.1, 5.0.5 │ nodejs-y18n: prototype pollution vulnerability               │
+│          │                │          │        │                   │                     │ https://avd.aquasec.com/nvd/cve-2020-7774                    │
+└──────────┴────────────────┴──────────┴────────┴───────────────────┴─────────────────────┴──────────────────────────────────────────────────────────────┘
+exit code: 0

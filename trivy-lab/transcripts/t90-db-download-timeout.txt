@@ -1,0 +1,18 @@
+# The lab's first-ever scan attempt, run in its scratch staging
+# area before the fixtures took their places in this repository.
+# No database repository was named, so Trivy used its default
+# route - and on the lab's network that route stalled.
+$ trivy fs lab/fixtures/oldpy
+2026-10-28T04:44:58Z	INFO	[vulndb] Need to update DB
+2026-10-28T04:44:58Z	INFO	[vulndb] Downloading vulnerability DB...
+2026-10-28T04:44:58Z	INFO	[vulndb] Downloading artifact...	repo="mirror.gcr.io/aquasec/trivy-db:2"
+2026-10-28T05:16:05Z	WARN	Provide a higher timeout value, see https://trivy.dev/docs/v0.76/guide/references/troubleshooting#timeout
+2026-10-28T05:16:05Z	FATAL	Fatal error	run error: init error: DB error: failed to download vulnerability DB: OCI artifact error: failed to download vulnerability DB: failed to download artifact from mirror.gcr.io/aquasec/trivy-db:2: OCI repository error: 1 error occurred:
+	* Get "https://mirror.gcr.io/v2/aquasec/trivy-db/manifests/2": context deadline exceeded
+
+
+
+real	31m7.986s
+user	0m0.258s
+sys	0m0.587s
+exit code: 1

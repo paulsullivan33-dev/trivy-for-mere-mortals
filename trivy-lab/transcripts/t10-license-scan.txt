@@ -1,0 +1,38 @@
+$ cp -r trivy-lab/fixtures/oldjs trivy-lab/oldjs-installed
+$ cd trivy-lab/oldjs-installed && npm install
+added 4 packages
+
+$ trivy fs --scanners license trivy-lab/oldjs-installed
+2026-10-28T05:21:15Z	INFO	[license] License scanning is enabled
+2026-10-28T05:21:15Z	INFO	Number of language-specific files	num=1
+
+Report Summary
+
+┌───────────────────┬──────┬──────────┐
+│      Target       │ Type │ Licenses │
+├───────────────────┼──────┼──────────┤
+│ package-lock.json │ npm  │    -     │
+├───────────────────┼──────┼──────────┤
+│ package-lock.json │  -   │    4     │
+└───────────────────┴──────┴──────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+
+package-lock.json (license)
+===========================
+Total: 4 (UNKNOWN: 0, LOW: 4, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
+
+┌──────────┬─────────┬────────────────┬──────────┐
+│ Package  │ License │ Classification │ Severity │
+├──────────┼─────────┼────────────────┼──────────┤
+│ ini      │ ISC     │ notice         │ LOW      │
+├──────────┼─────────┤                │          │
+│ lodash   │ MIT     │                │          │
+├──────────┤         │                │          │
+│ minimist │         │                │          │
+├──────────┼─────────┤                │          │
+│ y18n     │ ISC     │                │          │
+└──────────┴─────────┴────────────────┴──────────┘
+exit code: 0

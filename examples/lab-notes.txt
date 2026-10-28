@@ -1,0 +1,68 @@
+The lab — one real binary, one machine, nobody else's systems
+====================================================================
+
+The lab is Trivy as Aqua ships it: the official release
+archive for version 0.76.1 from the project's GitHub
+releases, the bare binary kept in a scratch folder on the
+path, run on the build machine (an Ubuntu 24.04 sandbox,
+2 CPUs, 7.7 GB RAM):
+
+  * The vulnerability database was downloaded twice. The
+    first attempt - a plain scan, no repository named -
+    took Trivy's default route to a mirror of the
+    database and stalled for the full default deadline,
+    about 31 minutes, failing with "context deadline
+    exceeded" (transcript t90). Naming the other official
+    home, ghcr.io/aquasecurity/trivy-db:2, with a raised
+    --timeout brought the same 130.11 MiB home in about
+    15 seconds (t01). The checks bundle for config scans
+    (165 KiB, ghcr.io/aquasecurity/trivy-checks:1) came
+    down without incident on the same route (t08).
+
+  * Fixtures (trivy-lab/fixtures/), all fictional and
+    written for this guide:
+      - oldpy: six Python packages pinned to 2019
+        versions in requirements.txt (Django 2.2.0,
+        requests 2.19.1, PyYAML 5.1, urllib3 1.24.1,
+        Jinja2 2.10.1, Pillow 5.4.1) -> 147 findings.
+      - oldjs: four npm packages in a lockfileVersion 1
+        package-lock.json (lodash 4.17.15, minimist
+        0.0.8, y18n 4.0.0, ini 1.3.5) -> 11 findings.
+      - cleanpy: one current pin (urllib3 2.5.0) ->
+        the gate's passing case.
+      - badconfig: a Dockerfile (SSH installed, root,
+        latest tag), a Terraform file (public S3 ACL,
+        SSH open to 0.0.0.0/0), a Kubernetes deployment
+        (privileged, root, host network) -> 40 failed
+        checks of 136.
+      - secret-demo: AWS's own published example key
+        pair in a notes file -> NOT flagged; the scanner
+        allowlists the famous examples (checked in two
+        file formats).
+      - secret-demo2: an AWS-shaped key pair invented
+        at random for this lab -> 2 CRITICAL findings.
+        It is not a real credential.
+
+  * Images scanned (public, pulled onto the lab
+    machine): alpine:3.12 (1 CRITICAL, plus the
+    end-of-life OS warning) and debian:9-slim
+    (68 findings, 66 with no fix; --ignore-unfixed
+    leaves 2).
+
+  * Generated during the lab and removed afterwards
+    (the transcripts are the evidence; the chapters and
+    commands above regenerate them):
+      - trivy-lab/oldjs-installed - a copy of oldjs
+        after "npm install", for the licence scan (t10).
+      - trivy-lab/repo-demo - a git repository built
+        from oldjs: git init, git add -A, one commit;
+        then "trivy repo trivy-lab/repo-demo" (t13).
+      - trivy-lab/oldpy-sbom.json and
+        oldpy-sbom-vuln.json - the chapter 10 SBOMs.
+
+  * The .trivyignore demonstration lives in
+    trivy-lab/ignore-demo (a copy of oldjs plus the
+    ignore file), transcript t12. The ignore file's
+    expiry dates were exercised separately: an entry
+    expired in 2020 lets CVE-2021-44906 back into the
+    report; one expiring in 2099 keeps it accepted.
